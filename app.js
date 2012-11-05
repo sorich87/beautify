@@ -1,14 +1,14 @@
 var express = require('express')
-  , app = express()
-  , beautify_html = require('./beautify-html');
+  , app = express();
 
 app.use(express.bodyParser());
 
 app.post('/', function (req, res) {
   var beautiful
-    , source = req.body.source;
+    , source = req.body.source
+    , lang = req.body.lang;
 
-  beautiful = beautify_html(source, {
+  beautiful = require('./beautify-' + lang)(source, {
       'indent_char': "\t"
     , 'indent_size': 1
     , 'max_char': 0
