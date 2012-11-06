@@ -8,6 +8,11 @@ app.post('/', function (req, res) {
     , source = req.body.source
     , lang = req.body.lang;
 
+  if (!source || !lang) {
+    res.send(400);
+    return;
+  }
+
   beautiful = require('./beautify-' + lang)(source, {
       'indent_char': "\t"
     , 'indent_size': 1
@@ -27,3 +32,5 @@ app.all('*', function (req, res) {
 });
 
 app.listen(process.env.VCAP_APP_PORT || 3000);
+
+module.exports = app;
