@@ -1,8 +1,11 @@
 {
-      "name" : "mat-beautify"
-    , "version" : "0.0.0"
-    , "private" : true
-    , "dependencies" : {
-      "express" : "3.x"
-    }
+    "name" : "mat-beautify"
+  , "version" : "0.0.0"
+  , "private" : true
+  , "dependencies" : {
+    "express" : "3.x"
+  }
+  , "devDependencies": {
+    "supertest": "*"
+  }
 }
