@@ -1,5 +1,6 @@
 var express = require('express')
-  , app = express();
+  , app = express()
+  , ratchet = require('ratchetio');
 
 app.use(express.bodyParser());
 
@@ -30,6 +31,10 @@ app.post('/', function (req, res) {
 app.all('*', function (req, res) {
   res.send('');
 });
+
+if (process.env.RATCHET_TOKEN) {
+  app.use(ratchet.errorHandler(process.env.RATCHET_TOKEN));
+}
 
 app.listen(process.env.VCAP_APP_PORT || 3000);
 
